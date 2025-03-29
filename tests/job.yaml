@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jmeter-test
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: jmeter
+          image: justb4/jmeter:5.5
+          command: ["jmeter", "-n", "-t", "/jmeter/test-plan.jmx", "-l", "/jmeter/resultados/resultados.jtl"]
+          volumeMounts:
+            - name: jmeter-test
+              mountPath: /jmeter
+            - name: jmeter-storage
+              mountPath: /jmeter/resultados
+      volumes:
+        - name: jmeter-test
+          configMap:
+            name: jmeter-test
+        - name: jmeter-storage
+          persistentVolumeClaim:
+            claimName: jmeter-pvc

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          volumeMounts:
+            - name: grafana-config
+              mountPath: /etc/grafana/provisioning/datasources
+              readOnly: true
+            - name: grafana-dashboard-storage
+              mountPath: /var/lib/grafana/dashboards
+            - name: grafana-dashboard-providers
+              mountPath: /etc/grafana/provisioning/dashboards
+      volumes:
+        - name: grafana-config
+          configMap:
+            name: grafana-config
+        - name: grafana-dashboard-storage
+          configMap:
+            name: grafana-dashboard
+        - name: grafana-dashboard-providers
+          configMap:
+            name: grafana-dashboard-providers

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jmeter-service
+  namespace: default
+spec:
+  selector:
+    app: jmeter
+  ports:
+    - protocol: TCP
+      port: 1099
+      targetPort: 1099
