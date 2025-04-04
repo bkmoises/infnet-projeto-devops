@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: movies
   name: prometheus-service
-  namespace: default
 spec:
-  ports:
-    - port: 9090
-      targetPort: 9090
   selector:
     app: prometheus
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+      nodePort: 30092
+  type: NodePort

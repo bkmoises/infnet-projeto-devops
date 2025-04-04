@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: movies
   name: grafana
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -16,6 +16,8 @@ spec:
       containers:
         - name: grafana
           image: grafana/grafana:latest
+          ports:
+            - containerPort: 3000
           volumeMounts:
             - name: grafana-config
               mountPath: /etc/grafana/provisioning/datasources

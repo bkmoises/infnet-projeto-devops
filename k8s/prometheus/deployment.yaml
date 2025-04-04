@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: movies
   name: prometheus
-  namespace: default
 spec:
   replicas: 1
   selector:

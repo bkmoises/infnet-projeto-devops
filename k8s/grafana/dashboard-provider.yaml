@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: movies
   name: grafana-dashboard-providers
-  namespace: default
 data:
   dashboard.yaml: |
     apiVersion: 1

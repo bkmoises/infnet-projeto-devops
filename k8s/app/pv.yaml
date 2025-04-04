@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  namespace: movies
   name: movies-api-pv
 spec:
   capacity:

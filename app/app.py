@@ -19,10 +19,11 @@ class Movie(Base):
     ano = Column(Integer)
     diretor = Column(String)
 
-Base.metadata.create_all(bind=engine)
-
 app = Flask(__name__)
 PrometheusMetrics(app)
+
+def init_db():
+    Base.metadata.create_all(bind=engine)
 
 def get_db():
     db = SessionLocal()
@@ -110,4 +111,5 @@ def ready_check():
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
+    init_db()
     app.run()

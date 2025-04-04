@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: movies
   name: postgres
 spec:
   replicas: 1

@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: movies
   name: movies-api
 spec:
   replicas: 4
@@ -15,6 +16,7 @@ spec:
       containers:
         - name: movies-api
           image: moisesreis/movies-api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           env:
