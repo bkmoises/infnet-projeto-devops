@@ -40,7 +40,7 @@ jobs:
           kubectl rollout restart deploy movies-api -n movies
       - name: "Verificando Deploy"
         run: |
-          if ! kubectl rollout status deploy movies-api -n movies; then
+          if ! kubectl rollout status deploy movies-api -n movies --timeout=60s; then
             echo "Deploy falhou. Fazendo rollback..."
             kubectl rollout undo deploy movies-api -n movies
             exit 1

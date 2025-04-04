@@ -13,4 +13,4 @@ EXPOSE 8000
 
 ENV DATABASE_URL=postgresql://admin:admin@postgres:5432/database
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app.app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.app:app"]
