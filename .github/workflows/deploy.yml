@@ -1,0 +1,16 @@
+name: teste_noturno
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  teste_noturno:
+    runs-on: self-hosted
+    steps:
+      - name: "Iniciando Job"
+        run: echo "Iniciando Job"
