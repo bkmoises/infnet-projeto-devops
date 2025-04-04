@@ -25,4 +25,6 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: "Executando Testes"
-        run: pytest --maxfail=1 --disable-warnings -q
+        run: |
+          pwd
+          pytest --maxfail=1 --disable-warnings -q
