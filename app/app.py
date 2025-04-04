@@ -34,7 +34,7 @@ def get_db():
 
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({"mensagem": "Bem-vindo à API de Filmes."})
+    return jsonify({"mensagem": "Bem-vindo à API de Filmes!"})
 
 @app.route("/movies/", methods=["POST"])
 def create_movie():
