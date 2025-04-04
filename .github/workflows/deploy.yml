@@ -45,5 +45,5 @@ jobs:
             kubectl rollout undo deploy movies-api -n movies
             exit 1
           else
-            echo "Deploy realizado com sucesso."
+            echo "Deploy realizado com sucesso!"
           fi
