@@ -18,9 +18,11 @@ jobs:
         uses: actions/checkout@v4
       - name: "Setup Python"
         uses: actions/setup-python@v5
+        WITH:
+          python-version: '3.10'
       - name: "Instalando Dependências"
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      # "pytest --maxfail=1 --disable-warnings -q"
+      - name: "Executando Testes"
+        runs: pytest --maxfail=1 --disable-warnings -q"
